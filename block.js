@@ -23,6 +23,15 @@ class Block{
         }
         return true
     }
+
+    minedBlock(difficulty){
+    //  try to solve a mathematical problem
+    while(this.hash.substring(0, difficulty) !== Array(difficulty+1).join('0')){
+       this.hash.nonce++
+       this.hash=this.calculateHash()
+    }
+    console.log('Block mined, nonce ' + this.nonce + ' hash : ' + this.hash)
+    }
 }
 
 module.exports=Block
